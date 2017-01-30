@@ -33,6 +33,10 @@ class Athlete:
         self.times=a_times
     def top3(self):
         return(sorted(set([sanitize(t) for t in self.times]))[0:3])
+    def add_time(self,time_value):
+        self.times.append(time_value)
+    def add_times(self,list_of_times):
+        self.times.extend(list_of_times)
     
 def get_coach_data(filename):
         try:
@@ -45,3 +49,8 @@ def get_coach_data(filename):
             return(None)
 sarah=get_coach_data('sarah2.txt')
 print(sarah.name+"'s fastest times are:"+str(sarah.top3()))
+vera=Athlete('Vera vi')
+vera.add_time('1.31')
+print(vera.times)
+vera.add_times(['2.22','1-21','2:22'])
+print(vera.top3())
