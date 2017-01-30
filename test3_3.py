@@ -54,3 +54,21 @@ vera.add_time('1.31')
 print(vera.times)
 vera.add_times(['2.22','1-21','2:22'])
 print(vera.top3())
+
+
+#python中类的继承
+class AthleteList(list):
+    def __init__(self,a_name,a_dob=None,a_times=[]):
+        list.__init__([])
+        self.name=a_name
+        self.dob=a_dob
+        self.extend(a_times)
+    def top3(self):
+        return(sorted(set([sanitize(t) for t in self]))[0:3])
+    #数据本身是计时数据，所以不再需要“times”属性
+    #我觉得从好多地方都可以看出python的“随意性”，便捷性
+vera=Athlete('Vera vi')
+vera.add_time('1.31')
+print(vera.top3())
+vera.add_times(['2.22','1-21','2:22'])
+print(vera.top3())
